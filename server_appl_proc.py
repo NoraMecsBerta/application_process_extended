@@ -43,6 +43,13 @@ def applicants_data():
     return render_template('applicants.html', applicants=applicants)
 
 
+@app.route('/applicants-and-mentors')
+def applicants_with_mentors():
+    applicants_and_mentors = queries_appl_proc.read_applicants_and_mentors()
+    return render_template('applicants-and-mentors.html', applicants_and_mentors=applicants_and_mentors)
+
+
+
 if __name__ == '__main__':
     app.secret_key = 'dojo'
     app.run(

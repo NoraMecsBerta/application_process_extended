@@ -60,3 +60,17 @@ def read_applicants(cursor):
         )
     applicants = cursor.fetchall()
     return applicants
+
+
+@common_appl_proc.connection_handler
+def read_applicants_and_mentors(cursor):
+    cursor.execute(
+        '''SELECT applicants.first_name AS applicants_name, applicants.application_code, mentors.first_name, mentors.last_name
+        FROM applicants
+        LEFT OUTER JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
+        LEFT OUTER JOIN mentors ON applicants_mentors.mentor_id=mentors.id
+        ORDER BY applicants.id;'''
+        )
+    applicants_and_mentors = cursor.fetchall()
+    return applicants_and_mentors
+    
