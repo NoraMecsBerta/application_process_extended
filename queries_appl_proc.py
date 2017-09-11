@@ -35,3 +35,28 @@ def read_mentors_by_country(cursor):
         )
     mentors_by_countries = cursor.fetchall()
     return mentors_by_countries
+
+
+@common_appl_proc.connection_handler
+def read_contacts_and_schools(cursor):
+    cursor.execute(
+        '''SELECT schools.name, mentors.first_name, mentors.last_name
+        FROM schools
+        JOIN mentors ON schools.contact_person=mentors.id
+        ORDER BY schools.name;'''
+        )
+    contacts_and_schools = cursor.fetchall()
+    return contacts_and_schools
+
+
+@common_appl_proc.connection_handler
+def read_applicants(cursor):
+    cursor.execute(
+        '''SELECT applicants.first_name, applicants.application_code, applicants_mentors.creation_date
+        FROM applicants
+        JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
+        WHERE applicants_mentors.creation_date < '2016-01-01'
+        ORDER BY applicants_mentors.creation_date DESC;'''
+        )
+    applicants = cursor.fetchall()
+    return applicants

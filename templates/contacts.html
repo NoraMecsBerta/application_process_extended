@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Contacts</title>
+        <!--<link rel='stylesheet' type='text/css' href={{url_for('static', filename='styles.css')}}>-->
+
+   <!--  moved into a CSS file, see the link above
+      <style>
+            table {
+                border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
+            thead { border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif}
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+        </style>-->
+    </head>
+    <body>
+        <h1>Contacts and schools</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td><strong>School name</strong></td>
+                    <td><strong>First name</strong></td>
+                    <td><strong>Last name</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if contacts_and_schools %}
+                    {% for school_contact in contacts_and_schools %}
+                    <tr>
+                        <td>{{ school_contact['name'] }}</td>
+                        <td>{{ school_contact['first_name'] }}</td>
+                        <td>{{ school_contact['last_name'] }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>

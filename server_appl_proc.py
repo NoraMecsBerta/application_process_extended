@@ -30,12 +30,18 @@ def mentors_by_country():
     mentors_by_countries = queries_appl_proc.read_mentors_by_country()
     return render_template('mentors-by-country.html', mentors_by_countries=mentors_by_countries)
 
-'''
-@app.route('/mentors-by-country')
-def mentorby_country():
-    mentors_by_countries = queries_appl_proc.read_all_schools_and_mentors()
-    return render_template('all-school.html', all_schools_and_mentors=all_schools_and_mentors)
-'''
+
+@app.route('/contacts')
+def contacts():
+    contacts_and_schools = queries_appl_proc.read_contacts_and_schools()
+    return render_template('contacts.html', contacts_and_schools=contacts_and_schools)
+
+
+@app.route('/applicants')
+def applicants_data():
+    applicants = queries_appl_proc.read_applicants()
+    return render_template('applicants.html', applicants=applicants)
+
 
 if __name__ == '__main__':
     app.secret_key = 'dojo'
