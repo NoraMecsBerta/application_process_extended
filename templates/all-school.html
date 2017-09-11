@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mentors</title>
+        <!--<link rel='stylesheet' type='text/css' href={{url_for('static', filename='styles.css')}}>-->
+
+   <!--  moved into a CSS file, see the link above
+      <style>
+            table {
+                border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
+            thead { border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif}
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+        </style>-->
+    </head>
+    <body>
+        <h1>Mentors and schools</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td><strong>First name</strong></td>
+                    <td><strong>Last name</strong></td>
+                    <td><strong>School</strong></td>
+                    <td><strong>Country</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if all_schools_and_mentors %}
+                    {% for school_mentor in all_schools_and_mentors %}
+                    <tr>
+                        <td>{% if school_mentor['first_name']%} 
+                            {{ school_mentor['first_name'] }}
+                            {% else %}
+                            No data
+                            {% endif %}</td>
+                        <td>{% if school_mentor['last_name']%}
+                            {{ school_mentor['last_name'] }}
+                            {%else%}
+                            No data
+                            {%endif%}</td>
+                        <td>{{ school_mentor['school_name'] }}</td>
+                        <td>{{ school_mentor['country'] }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
