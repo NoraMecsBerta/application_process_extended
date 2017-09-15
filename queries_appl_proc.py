@@ -1,5 +1,6 @@
 import common_appl_proc
 
+
 @common_appl_proc.connection_handler
 def read_mentors_and_schools(cursor):
     cursor.execute(
@@ -73,4 +74,3 @@ def read_applicants_and_mentors(cursor):
         )
     applicants_and_mentors = cursor.fetchall()
     return applicants_and_mentors
-    
