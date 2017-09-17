@@ -1,29 +1,3 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Mentors by country</title>
-        <link rel='stylesheet' type='text/css' href={{url_for('static', filename='styles.css')}}>
-    </head>
-    <body>
-        <h1>Mentors by countries</h1>
-        <table>
-            <thead>
-                <tr>
-                    <td><strong>Country</strong></td>
-                    <td><strong>Count of the mentors</strong></td>
-                </tr>
-            </thead>
-            <tbody>
-                {% if mentors_by_countries %}
-                    {% for mentor_count_country in mentors_by_countries %}
-                    <tr>
-                        <td>{{ mentor_count_country['country'] }}</td>
-                        <td>{{ mentor_count_country['count'] }}</td>
-                    </tr>
-                    {% endfor %}
-                {% endif %}
-            </tbody>
-        </table>
-    </body>
-</html>
+{% extends 'layout.html' %}
+{% block title %}Mentors by country{% endblock %}
+{% block title2 %} Mentors by countries{% endblock %}
